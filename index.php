@@ -16,15 +16,15 @@ function getCountryCodePrice(){
     $countryCode = func_get_args();
     
     //loopar igenom alla landskoder som man skriver in som argument till funktionen
-    foreach ($countryCode as $id => $letters) {
+    foreach ($countryCode as $letters) {
         $findCountryCode = false;
         $totalPrice = [];
         $WrongID = [];
         $successOrNot;
         //lopar igenom alla rader som finns i .csv filen
-        foreach ($csv as $key => $arrayItem) {
+        foreach ($csv as $arrayItem) {
             //loopar igenom varje rad i .csv filen som finns
-            foreach ($arrayItem as $key2 => $value) {
+            foreach ($arrayItem as $value) {
                 //kollar om landskoden finns med i någon sträng
                 if($arrayItem[0] && strpos($value, $letters)){
                     //kollar om alla ID fölljer samma struktur och räknar ut total värdet av dem
@@ -64,4 +64,4 @@ function getCountryCodePrice(){
         echo "Total Price: " . array_sum($totalPrice) . "<br/>" . "Status: " . $successOrNot . "<br/><br/>";
     }
 }
-echo getCountryCodePrice("SE", "US", "RU", "EU");
+echo getCountryCodePrice("US");
